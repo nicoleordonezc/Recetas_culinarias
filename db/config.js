@@ -10,7 +10,7 @@ const cliente = new MongoClient(uri);
 
 let db;
 
-export async function connect() {
+export default async function connect() {
     try {
         await cliente.connect();
         console.log('MongoDB conectado exitosamente');

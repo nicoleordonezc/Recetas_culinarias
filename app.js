@@ -1,5 +1,7 @@
 import dotenv from 'dotenv';
 import express from 'express';
+import usuarioRouter from "./routers/usuariosRouter.js"
+import connect from "./db/config.js"
 
 dotenv.config();
 
@@ -8,7 +10,7 @@ const app = express();
 
 app.use(express.json());
 
-// app.use("/");
+app.use("/recetasCulinarias", usuarioRouter );
 
 app.get("/api", function (req,res) {
     res.send("Api OK!")
