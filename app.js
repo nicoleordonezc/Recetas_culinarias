@@ -12,12 +12,9 @@ app.use(express.json());
 
 app.use("/recetasCulinarias", usuarioRouter );
 
-app.get("/api", function (req,res) {
-    res.send("Api OK!")
-});
 
 connect().then(()=>{
     app.listen(port, ()=>{
-        console.log("http://localhost:"+port+"/api");
+        console.log("http://localhost:"+port);
     })
 })
