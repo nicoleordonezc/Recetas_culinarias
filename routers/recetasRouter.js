@@ -53,12 +53,12 @@ router.get("/getRecipeByUser/:nombreUsuario", async function(req, res) {
 
 router.post("/registarReceta", async function (req, res) {
    try {
-      const {nombre, descripcion, nombreUsuario} = req.body;
-      if(!nombre || !descripcion || !nombreUsuario){
+      const {nombre, descripcion, nombreUsuario, cedulaUsuario} = req.body;
+      if(!nombre || !descripcion || !nombreUsuario || !cedulaUsuario){
          res.status(400).json({ error: "Datos invalidos"})
       }
       const nuevaReceta = {
-         nombre, descripcion, nombreUsuario, ingredientes:[]
+         nombre, descripcion, nombreUsuario, cedulaUsuario, ingredientes:[]
       };
       await getDB().collection("recetas").insertOne(nuevaReceta);
       res.status(201).json({message: "La receta ha sido agregada"})

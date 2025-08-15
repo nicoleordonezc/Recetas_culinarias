@@ -5,6 +5,12 @@
 API REST construida con **Node.js**, **Express** y **MongoDB** para gestionar usuarios, recetas e ingredientes de una plataforma culinaria.
 
 ---
+## 📄 Video
+
+Puedes consultar el video de exposición aquí:  
+[📥 Ver video](https://drive.google.com/drive/folders/1Yd2JkG8dk5FOm53t-UC6popIKU0WHrkJ?usp=sharing)
+
+---
 
 ## 📂 Estructura del Proyecto
 
@@ -36,7 +42,6 @@ RECETAS\_CULINARIAS/
    ```bash
    git clone <url-del-repo>
    cd RECETAS_CULINARIAS
-````
 
 2. **Instalar dependencias**
 
