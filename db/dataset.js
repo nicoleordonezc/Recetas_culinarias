@@ -33,11 +33,52 @@ async function seed() {
           "cedula": 321654987
         }
       ];      
-      
+    const recetas = [
+  {
+    nombre: "Paella Valenciana",
+    descripcion: "Un clásico plato español con arroz, mariscos y azafrán.",
+    nombreUsuario: "Carlos Pérez",
+    cedulaUsuario: 123456789,
+    ingredientes: ["Arroz", "Caldo de pescado", "Gambas", "Mejillones", "Azafrán", "Pimiento rojo"]
+  },
+  {
+    nombre: "Tortilla de Patatas",
+    descripcion: "Tradicional tortilla española de huevo y patata.",
+    nombreUsuario: "Ana Gómez",
+    cedulaUsuario: 987654321,
+    ingredientes: ["Patatas", "Huevos", "Aceite de oliva", "Sal", "Cebolla"]
+  },
+  {
+    nombre: "Gazpacho Andaluz",
+    descripcion: "Sopa fría de tomate, perfecta para el verano.",
+    nombreUsuario: "Luis Fernández",
+    cedulaUsuario: 456123789,
+    ingredientes: ["Tomates maduros", "Pepino", "Pimiento verde", "Aceite de oliva", "Vinagre", "Ajo", "Sal"]
+  },
+  {
+    nombre: "Pulpo a la Gallega",
+    descripcion: "Pulpo cocido con pimentón y patatas, típico de Galicia.",
+    nombreUsuario: "Maria López",
+    cedulaUsuario: 789654123,
+    ingredientes: ["Pulpo", "Patatas", "Pimentón", "Aceite de oliva", "Sal gruesa"]
+  },
+  {
+    nombre: "Croquetas de Jamón",
+    descripcion: "Cremosas croquetas rellenas de jamón serrano.",
+    nombreUsuario: "Javier Sánchez",
+    cedulaUsuario: 321654987,
+    ingredientes: ["Jamón serrano", "Leche", "Harina", "Mantequilla", "Huevo", "Pan rallado", "Aceite para freír"]
+  }
+];
+;
+  
       await connect();
       await getDB().collection("usuarios").deleteMany();
       await getDB().collection("usuarios").insertMany(usuarios);
 
+      await getDB().collection("recetas").deleteMany();
+      await getDB().collection("recetas").insertMany(recetas);
+      
       console.log('Dataset agregado');
       process.exit();
       

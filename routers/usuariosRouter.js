@@ -22,8 +22,6 @@ router.get("/get/:cedula", async function(req, res) {
    try {
       const idUsuario = parseInt(req.params.cedula);
       const usuario = await getDB().collection("usuarios").findOne({cedula: idUsuario});
-      console.log(idUsuario, usuario);
-      
       if (!usuario){
          res.status(404).json({error: "El usuario no existe"})
       }
@@ -53,7 +51,38 @@ router.post("/registarUsuario", async function (req, res) {
    } catch (error) {
       res.status(500).json({error: "Error interno del servidor"})
    }
-})
+});
+
+//Actualizar usuario
+//http://localhost:5500/recetasCulinarias/patch/"cedula"
+
+router.patch("/patch/:cedula", async function(req, res) {
+      const idUsuario = parseInt(req.params.cedula);
+      const usuario = await getDB().collection("usuarios").findOne({cedula: idUsuario});
+      if (!usuario){
+         res.status(404).json({error: "El usuario no existe"})
+      }
+      const { telefono, correo} = req.body;
+      const editar = await getDB().collection("usuarios").updateOne({ cedula: idUsuario }, { $set: { telefono, correo } } 
+  );
+
+  res.status(200).json({ message: "Usuario actualizado correctamente" });
+});
+
+
+//Eliminar un usuario
+//http://localhost:5500/recetasCulinarias/delete/"cedula"
+
+router.delete("/delete/:cedula", async function(req, res) {
+      const idUsuario = parseInt(req.params.cedula);
+      const usuario = await getDB().collection("usuarios").findOne({cedula: idUsuario});
+      if (!usuario){
+         res.status(404).json({error: "El usuario no existe"})
+      }
+      await getDB().collection("usuarios").deleteOne({cedula: idUsuario});
+      await getDB().collection("recetas").deleteMany({cedulaUsuario: idUsuario})
+      res.status(200).json({response:"El usuario y sus recetas han sido eliminadas"})
+});
 
 
 export default router;
